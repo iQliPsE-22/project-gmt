@@ -16,8 +16,8 @@ const Card = ({
   return (
     <div className="absolute bottom-10 w-11/12 bg-[#fe8c00] text-white rounded-[48px] p-6">
       <div>
-        <h2 className="text-4xl text-center font-semibold mb-4">{heading}</h2>
-        <h3 className="text-center text-[18px]">{content}</h3>
+        <h2 className="text-3xl text-center font-semibold mb-4">{heading}</h2>
+        <h3 className="text-center text-sm">{content}</h3>
       </div>
 
       <div className="thumbs w-full flex justify-center gap-1 mt-4">
@@ -54,7 +54,7 @@ const Card = ({
           )}
         </div>
       </Link>
-      
+
       <div className="flex justify-between mt-4">
         <Link to="/login">
           <button className="text-white p-2 rounded">Skip</button>

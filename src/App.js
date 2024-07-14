@@ -5,7 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./components/Login";
 const App = () => {
   return (
-    <div>
+    <div className = "inter">
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Caraousel />} />
