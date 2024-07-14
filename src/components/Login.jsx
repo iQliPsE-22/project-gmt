@@ -83,7 +83,7 @@ const Login = () => {
 
       <div className="w-full mt-4 p-4 flex justify-center">
         <p className=" text-sm font-medium">
-          Don't have an account?
+          Don't have an account?{" "}
           <Link to="/signup">
             <span className="text-[#FE8C00]">Register</span>
           </Link>

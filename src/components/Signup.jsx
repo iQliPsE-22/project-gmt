@@ -97,7 +97,7 @@ const Signup = () => {
 
       <div className="w-full mt-4 p-4 flex justify-center">
         <p className=" text-sm font-medium">
-          Have an account?
+          Have an account?{" "}
           <Link to="/login">
             <span className="text-[#FE8C00]">Sign in</span>
           </Link>
