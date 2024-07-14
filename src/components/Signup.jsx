@@ -63,10 +63,10 @@ const Signup = () => {
               </svg>
             </span>
           </div>
-          <span className="m-4 mt-8 mb-8 flex flex-row items-center justify-center">
+          <span className="m-4 mt-8 mb-8  flex flex-row items-center justify-center gap-4">
             <input
               type="checkbox"
-              className="custom-checkbox mb-8 mr-2 transform scale-150"
+              className="custom-checkbox transform scale-150"
             />
             <p>
               I Agree with{" "}

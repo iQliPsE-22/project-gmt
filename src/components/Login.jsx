@@ -67,6 +67,8 @@ const Login = () => {
           />
         </div>
       </form>
+
+      
       <div className="w-full flex justify-center items-center flex-col ">
         <span className="w-4/5 mt-4 flex flex-row items-center justify-center space-x-2">
           <hr className="flex-grow border-[0.5] border-[#a5a5a5] " />
