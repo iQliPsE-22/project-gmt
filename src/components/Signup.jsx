@@ -26,21 +26,21 @@ const Signup = () => {
       </div>
       <form>
         <div className="w-full p-4 flex flex-col justify-center ">
-          <label className=" text-sm font-medium m-1">Email Adress</label>
+          <label className="text-sm font-medium m-1">Email Adress</label>
           <input
             type="email"
-            className="w-full p-4 border-2 border-[#d6d6d6] outline-[#d6d6d6] rounded-md"
+            className="w-full p-3 border-2 border-[#d6d6d6] outline-[#d6d6d6] rounded-md"
           />
           <label className=" text-sm font-medium mt-4 mb-1">User Name</label>
           <input
             type="text"
-            className="w-full p-4 border-2 border-[#d6d6d6] outline-[#d6d6d6] rounded-md"
+            className="w-full p-3 border-2 border-[#d6d6d6] outline-[#d6d6d6] rounded-md"
           />
           <label className=" text-sm font-medium mt-4 mb-1">Password</label>
           <div className="relative">
             <input
               type={showPassword ? "text" : "password"}
-              className="w-full p-4 border-2 border-[#d6d6d6] outline-[#d6d6d6] rounded-md pr-10"
+              className="w-full p-3 border-2 border-[#d6d6d6] outline-[#d6d6d6] rounded-md pr-10"
             />
             <span
               className="absolute top-1/2 right-4 transform -translate-y-1/2 "
@@ -77,7 +77,7 @@ const Signup = () => {
           <input
             type="submit"
             value="Register"
-            className="w-full p-4 bg-[#FE8C00] text-white font-medium rounded-full cursor-pointer"
+            className="w-full p-3 bg-[#FE8C00] text-white font-medium rounded-full cursor-pointer"
           />
         </div>
       </form>

@@ -63,11 +63,10 @@ const Login = () => {
           <input
             type="submit"
             value="Login"
-            className="w-full p-4 bg-[#FE8C00] text-white font-medium rounded-full cursor-pointer"
+            className="w-full p-3 bg-[#FE8C00] text-white font-medium rounded-full cursor-pointer"
           />
         </div>
       </form>
-
 
       <div className="w-full flex justify-center items-center flex-col  ">
         <span className="w-4/5 mt-4 flex flex-row items-center justify-center space-x-2 mb-2">
