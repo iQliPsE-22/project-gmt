@@ -20,7 +20,7 @@ const Card = ({
         <h3 className="text-center text-[18px]">{content}</h3>
       </div>
 
-      <div className="thumbs w-full flex justify-center gap-1 mt-4 ">
+      <div className="thumbs w-full flex justify-center gap-1 mt-4">
         {data.map((_, index) => (
           <div
             key={`thumb-${index}`}
@@ -32,9 +32,9 @@ const Card = ({
         ))}
       </div>
 
-      <div className="h-32 w-full flex items-center justify-center">
+      <div className="h-28 w-full flex items-center justify-center">
         {currentImage === data.length - 1 && (
-          <div className="h-32 w-32 flex items-center justify-center mt-8 border-2 border-t-[#fe9514] -rotate-45 rounded-full relative">
+          <div className="h-28 w-28 flex items-center justify-center mt-8 border-2 border-t-[#fe9514] -rotate-45 rounded-full relative">
             <div className="rotate-45 h-16 w-16 bg-white rounded-full flex items-center justify-center text-[#fe8c00] text-4xl">
               <svg
                 width="17"
