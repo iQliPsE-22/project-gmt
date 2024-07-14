@@ -28,13 +28,13 @@ const Login = () => {
           <label className=" text-sm font-medium m-1">Email Adress</label>
           <input
             type="email"
-            className="w-full p-4 border-2 border-[#d6d6d6] outline-[#d6d6d6] rounded-md"
+            className="w-full p-3 border-2 border-[#d6d6d6] outline-[#d6d6d6] rounded-md"
           />
           <label className=" text-sm font-medium mt-4 mb-1">Password</label>
           <div className="relative">
             <input
               type={showPassword ? "text" : "password"}
-              className="w-full p-4 border-2 border-[#d6d6d6] outline-[#d6d6d6] rounded-md pr-10"
+              className="w-full p-3 border-2 border-[#d6d6d6] outline-[#d6d6d6] rounded-md pr-10"
             />
             <span
               className="absolute top-1/2 right-4 transform -translate-y-1/2 "
@@ -68,9 +68,9 @@ const Login = () => {
         </div>
       </form>
 
-      
-      <div className="w-full flex justify-center items-center flex-col ">
-        <span className="w-4/5 mt-4 flex flex-row items-center justify-center space-x-2">
+
+      <div className="w-full flex justify-center items-center flex-col  ">
+        <span className="w-4/5 mt-4 flex flex-row items-center justify-center space-x-2 mb-2">
           <hr className="flex-grow border-[0.5] border-[#a5a5a5] " />
           <p className="text-[#878787]">Or sign in with</p>
           <hr className="flex-grow border=[0.5] border-[#a5a5a5]" />
