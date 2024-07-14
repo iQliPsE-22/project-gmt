@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import IMG2 from "../assets/image32.png";
-import IMG1 from "../assets/image38.png";
-import IMG3 from "../assets/image39.png";
+import IMG3 from "../assets/image32.png";
+import IMG2 from "../assets/image38.png";
+import IMG1 from "../assets/image39.png";
 import "../App.css";
 import Card from "./Card";
 
