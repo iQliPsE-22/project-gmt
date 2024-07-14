@@ -14,7 +14,7 @@ const Card = ({
   };
 
   return (
-    <div className="absolute bottom-10 w-11/12 bg-[#fe8c00] text-white rounded-[48px] p-8">
+    <div className="absolute bottom-10 w-11/12 bg-[#fe8c00] text-white rounded-[48px] p-6">
       <div>
         <h2 className="text-4xl text-center font-semibold mb-4">{heading}</h2>
         <h3 className="text-center text-[18px]">{content}</h3>

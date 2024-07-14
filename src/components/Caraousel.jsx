@@ -51,7 +51,7 @@ const Carousel = () => {
             <img
               src={item.src}
               alt={`image-${index}`}
-              className="w-full h-auto"
+              className="w-full h-screen object-cover"
             />
             <Card
               key={`card-${index}`}
