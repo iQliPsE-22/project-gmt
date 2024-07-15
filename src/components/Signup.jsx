@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { GoogleLogin } from "@react-oauth/google";
 import "../App.css";
+import { jwtDecode } from "jwt-decode";
 
 const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -9,11 +10,24 @@ const Signup = () => {
     setShowPassword(!showPassword);
   };
   const responseMessage = (response) => {
-    console.log(response);
+    // Decode the JWT from the response (assuming response contains the token)
+    const decodedToken = jwtDecode(response);
+
+    // Extract the user details
+    const data = {
+      email: decodedToken.email,
+      username: decodedToken.name,
+      password: decodedToken.sub, // Typically, you wouldn't use the ID as a password, this is just for example purposes
+    };
+
+    // Log the data
+    console.log(data);
   };
+
   const errorMessage = (error) => {
     console.log(error);
   };
+
   return (
     <div className="inter flex justify-center flex-col">
       <div className="w-11/12 p-4 pt-8">
