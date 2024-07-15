@@ -19,7 +19,8 @@ const Signup = () => {
     const data = {
       email: decodedToken.email,
       username: decodedToken.name,
-      password: decodedToken.sub, // Typically, you wouldn't use the ID as a password, this is just for example purposes
+      password: decodedToken.password, 
+      profilePicture: decodedToken.picture,
     };
 
     // Log the data
