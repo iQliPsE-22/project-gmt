@@ -6,31 +6,60 @@ import { jwtDecode } from "jwt-decode";
 
 const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const handlePasswordShow = () => {
-    setShowPassword(!showPassword);
-  };
-  const responseMessage = (response) => {
-    // Decode the JWT from the response (assuming response contains the token)
+  const [userData, setUserData] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
+
+  const responseMessage = async (response) => {
     console.log(response);
     const token = String(response.credential);
     const decodedToken = jwtDecode(token);
 
-    // Extract the user details
     const data = {
-      email: decodedToken.email,
       username: decodedToken.name,
-      password: decodedToken.password, 
-      profilePicture: decodedToken.picture,
+      email: decodedToken.email,
+      googleId: decodedToken.sub,
     };
+    try {
+      const res = await fetch("http://localhost:3000/api/auth/google", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      const responseData = await res.json();
+      console.log(responseData);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-    // Log the data
-    console.log(data);
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("http://localhost:3000/api/auth/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+      });
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const errorMessage = (error) => {
     console.log(error);
   };
-
+  const handlePasswordShow = () => {
+    setShowPassword(!showPassword);
+  };
   return (
     <div className="inter flex justify-center flex-col">
       <div className="w-11/12 p-4 pt-8">
@@ -41,23 +70,32 @@ const Signup = () => {
           Create an account to start looking for the food you like{" "}
         </p>
       </div>
-      <form>
+      <form onSubmit={handleFormSubmit}>
         <div className="w-full p-4 flex flex-col justify-center ">
           <label className="text-sm font-medium m-1">Email Adress</label>
           <input
             type="email"
             className="w-full p-3 border-2 border-[#d6d6d6] outline-[#d6d6d6] rounded-md"
+            onChange={(e) =>
+              setUserData({ ...userData, email: e.target.value })
+            }
           />
           <label className=" text-sm font-medium mt-4 mb-1">User Name</label>
           <input
             type="text"
             className="w-full p-3 border-2 border-[#d6d6d6] outline-[#d6d6d6] rounded-md"
+            onChange={(e) =>
+              setUserData({ ...userData, username: e.target.value })
+            }
           />
           <label className=" text-sm font-medium mt-4 mb-1">Password</label>
           <div className="relative">
             <input
               type={showPassword ? "text" : "password"}
               className="w-full p-3 border-2 border-[#d6d6d6] outline-[#d6d6d6] rounded-md pr-10"
+              onChange={(e) =>
+                setUserData({ ...userData, password: e.target.value })
+              }
             />
             <span
               className="absolute top-1/2 right-4 transform -translate-y-1/2 "
