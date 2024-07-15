@@ -11,7 +11,8 @@ const Signup = () => {
   };
   const responseMessage = (response) => {
     // Decode the JWT from the response (assuming response contains the token)
-    const decodedToken = jwtDecode(response);
+    console.log(response);
+    const decodedToken = jwtDecode(response.credentials);
 
     // Extract the user details
     const data = {
