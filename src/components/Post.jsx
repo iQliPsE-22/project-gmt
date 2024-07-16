@@ -71,7 +71,7 @@ const Post = () => {
         <h2 className="inter text-3xl font-semibold mt-8">Login Successful</h2>
         <div>
           <Link to="/home">
-            <button className="w-full mt-8 p-3 bg-[#FE8C00] text-white font-medium rounded-full cursor-pointer">
+            <button className="w-full p-4  mt-8 p-3 bg-[#FE8C00] text-white font-medium rounded-full cursor-pointer">
               Go to Tracking Screen
             </button>
           </Link>
