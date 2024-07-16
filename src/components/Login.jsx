@@ -5,14 +5,14 @@ import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../userContext";
 const Login = () => {
-  const { setUser } = useUser();
+  const { user, setUser } = useUser();
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [userData, setUserData] = useState({
     email: "",
     password: "",
   });
-
+  const [error, setError] = useState("");
   const handlePasswordShow = () => {
     setShowPassword(!showPassword);
   };
@@ -34,12 +34,11 @@ const Login = () => {
         body: JSON.stringify(data),
       });
       const responseData = await res.json();
-      console.log(responseData);
+      console.log(responseData.user);
       if (responseData.message === "User already exists. Please Login") {
-        alert("User already exists. Please Login");
-      } else {
         setUser(responseData.user);
-        navigate("/dashboard");
+      } else {
+        setError("User Not Found");
       }
     } catch (error) {
       console.log(error);
@@ -62,6 +61,8 @@ const Login = () => {
       const data = await response.json();
       console.log(data);
       setUser(data.user);
+
+      if (user) navigate("/home");
     } catch (error) {
       console.log(error);
     }
@@ -117,6 +118,7 @@ const Login = () => {
               </svg>
             </span>
           </div>
+          <p className="text-red-500 text-sm">{error}</p>
           <span className="m-4 mt-8 mb-8">
             <p className="text-[#FE8C00] text-right">Forgot Password?</p>
           </span>
