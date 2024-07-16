@@ -34,7 +34,7 @@ const Signup = () => {
       });
       const responseData = await res.json();
       console.log(responseData);
-      if (responseData.message === "User already exists") {
+      if (responseData.message === "User already exists. Please Login") {
         setError("User already exists");
       } else {
         setError(null);
@@ -63,6 +63,7 @@ const Signup = () => {
       if (data.message === "Username already exists") {
         setError("Username already exists");
       } else {
+        setError(null);
         navigate("/login");
       }
     } catch (error) {
