@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { GoogleLogin } from "@react-oauth/google";
 import "../App.css";
 import { jwtDecode } from "jwt-decode";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -34,7 +34,9 @@ const Signup = () => {
       });
       const responseData = await res.json();
       console.log(responseData);
-      navigate("/login");
+      if (responseData.message === "User already exists") {
+        setError("User already exists");
+      } else navigate("/login");
     } catch (error) {
       console.log(error);
     }
@@ -57,8 +59,7 @@ const Signup = () => {
       }
       if (data.message === "Username already exists") {
         setError("Username already exists");
-      }
-      else{
+      } else {
         navigate("/login");
       }
     } catch (error) {
