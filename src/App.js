@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Home from "./components/Home";
+import Post from './components/Post';
 const App = () => {
   return (
     <div className="inter">
@@ -13,6 +14,7 @@ const App = () => {
           <Route path="/" element={<Caraousel />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/login-successful" element={<Post/>} />
           <Route path="/home" element={<Home/>} />
           <Route path="*" element={<h1>404 Not Found</h1>} />
         </Routes>

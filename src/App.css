@@ -15,6 +15,11 @@
 }
 
 .custom-checkbox:checked {
-  background-color: #FE8C00; 
+  background-color: #fe8c00;
   border-color: transparent;
+}
+.post {
+  background-image: url("./assets/image39.png");
+  background-size: cover;
+  height: 100dvh;
 }

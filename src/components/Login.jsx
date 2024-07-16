@@ -37,7 +37,7 @@ const Login = () => {
       console.log(responseData.user);
       if (responseData.message === "User already exists. Please Login") {
         setUser(responseData.user);
-        if(user) navigate("/home");
+        if (user) navigate("/home");
       } else {
         setError("User Not Found");
       }
@@ -63,7 +63,7 @@ const Login = () => {
       console.log(data);
       setUser(data.user);
 
-      if (user) navigate("/home");
+      if (user) navigate("/login-successful");
     } catch (error) {
       console.log(error);
     }
