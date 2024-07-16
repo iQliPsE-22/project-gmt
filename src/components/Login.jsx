@@ -4,6 +4,11 @@ import { Link } from "react-router-dom";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [userData, setUser] = useState({
+    email: "",
+    password: "",
+  });
+
   const handlePasswordShow = () => {
     setShowPassword(!showPassword);
   };
@@ -13,6 +18,23 @@ const Login = () => {
   const errorMessage = (error) => {
     console.log(error);
   };
+  const handleFormSubmit = async(e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("http://localhost:3000/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+      });
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="inter flex justify-center flex-col">
       <div className="w-11/12 p-4 pt-8">
@@ -23,18 +45,22 @@ const Login = () => {
           Please sign in to your account
         </p>
       </div>
-      <form>
+      <form onSubmit={handleFormSubmit}>
         <div className="w-full p-4 flex flex-col justify-center ">
           <label className=" text-sm font-medium m-1">Email Adress</label>
           <input
             type="email"
             className="w-full p-3 border-2 border-[#d6d6d6] outline-[#d6d6d6] rounded-md"
+            onChange={(e) => setUser({ ...userData, email: e.target.value })}
           />
           <label className=" text-sm font-medium mt-4 mb-1">Password</label>
           <div className="relative">
             <input
               type={showPassword ? "text" : "password"}
               className="w-full p-3 border-2 border-[#d6d6d6] outline-[#d6d6d6] rounded-md pr-10"
+              onChange={(e) =>
+                setUser({ ...userData, password: e.target.value })
+              }
             />
             <span
               className="absolute top-1/2 right-4 transform -translate-y-1/2 "

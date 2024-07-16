@@ -11,7 +11,7 @@ const Signup = () => {
     email: "",
     password: "",
   });
-
+  const [error, setError] = useState(null);
   const responseMessage = async (response) => {
     console.log(response);
     const token = String(response.credential);
@@ -49,6 +49,12 @@ const Signup = () => {
       });
       const data = await response.json();
       console.log(data);
+      if (data.message === "User already exists") {
+        setError("User already exists");
+      }
+      if (data.message === "Username already exists") {
+        setError("Username already exists");
+      }
     } catch (error) {
       console.log(error);
     }
@@ -118,6 +124,9 @@ const Signup = () => {
               </svg>
             </span>
           </div>
+          
+          <div>{error && <p className="text-red-500">{error}</p>}</div>
+
           <span className="m-4 mt-8 mb-8  flex flex-row items-center justify-center gap-4">
             <input
               type="checkbox"
