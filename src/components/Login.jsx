@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import { GoogleLogin } from "@react-oauth/google";
 import { Link } from "react-router-dom";
-
+import { jwtDecode } from "jwt-decode";
+import { useNavigate } from "react-router-dom";
+import { useUser } from "../userContext";
 const Login = () => {
+  const { setUser } = useUser();
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
-  const [userData, setUser] = useState({
+  const [userData, setUserData] = useState({
     email: "",
     password: "",
   });
@@ -12,13 +16,40 @@ const Login = () => {
   const handlePasswordShow = () => {
     setShowPassword(!showPassword);
   };
-  const responseMessage = (response) => {
+  const responseMessage = async (response) => {
     console.log(response);
+    const token = String(response.credential);
+    const decodedToken = jwtDecode(token);
+    const data = {
+      username: decodedToken.name,
+      email: decodedToken.email,
+      googleId: decodedToken.sub,
+    };
+    try {
+      const res = await fetch("http://localhost:3000/api/auth/google", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      const responseData = await res.json();
+      console.log(responseData);
+      if (responseData.message === "User already exists. Please Login") {
+        alert("User already exists. Please Login");
+      } else {
+        setUser(responseData.user);
+        navigate("/dashboard");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
+
   const errorMessage = (error) => {
     console.log(error);
   };
-  const handleFormSubmit = async(e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await fetch("http://localhost:3000/api/auth/login", {
@@ -30,6 +61,7 @@ const Login = () => {
       });
       const data = await response.json();
       console.log(data);
+      setUser(data.user);
     } catch (error) {
       console.log(error);
     }
@@ -51,7 +83,9 @@ const Login = () => {
           <input
             type="email"
             className="w-full p-3 border-2 border-[#d6d6d6] outline-[#d6d6d6] rounded-md"
-            onChange={(e) => setUser({ ...userData, email: e.target.value })}
+            onChange={(e) =>
+              setUserData({ ...userData, email: e.target.value })
+            }
           />
           <label className=" text-sm font-medium mt-4 mb-1">Password</label>
           <div className="relative">
@@ -59,7 +93,7 @@ const Login = () => {
               type={showPassword ? "text" : "password"}
               className="w-full p-3 border-2 border-[#d6d6d6] outline-[#d6d6d6] rounded-md pr-10"
               onChange={(e) =>
-                setUser({ ...userData, password: e.target.value })
+                setUserData({ ...userData, password: e.target.value })
               }
             />
             <span

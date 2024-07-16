@@ -14,6 +14,7 @@ const Signup = () => {
   });
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  
   const responseMessage = async (response) => {
     console.log(response);
     const token = String(response.credential);
@@ -35,7 +36,7 @@ const Signup = () => {
       const responseData = await res.json();
       console.log(responseData);
       if (responseData.message === "User already exists. Please Login") {
-        setError("User already exists");
+        setError("User already exists. Please Login");
       } else {
         setError(null);
         navigate("/login");
