@@ -34,9 +34,7 @@ const Signup = () => {
       });
       const responseData = await res.json();
       console.log(responseData);
-      if(responseData.ok) {
-        navigate("/");
-      }
+      navigate("/login");
     } catch (error) {
       console.log(error);
     }
@@ -59,6 +57,9 @@ const Signup = () => {
       }
       if (data.message === "Username already exists") {
         setError("Username already exists");
+      }
+      else{
+        navigate("/login");
       }
     } catch (error) {
       console.log(error);
