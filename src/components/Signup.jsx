@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { GoogleLogin } from "@react-oauth/google";
 import "../App.css";
 import { jwtDecode } from "jwt-decode";
+import {useNavigate} from "react-router-dom";
 
 const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -12,6 +13,7 @@ const Signup = () => {
     password: "",
   });
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
   const responseMessage = async (response) => {
     console.log(response);
     const token = String(response.credential);
@@ -32,6 +34,9 @@ const Signup = () => {
       });
       const responseData = await res.json();
       console.log(responseData);
+      if(responseData.ok) {
+        navigate("/");
+      }
     } catch (error) {
       console.log(error);
     }
@@ -124,7 +129,7 @@ const Signup = () => {
               </svg>
             </span>
           </div>
-          
+
           <div>{error && <p className="text-red-500">{error}</p>}</div>
 
           <span className="m-4 mt-8 mb-8  flex flex-row items-center justify-center gap-4">
