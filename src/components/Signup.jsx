@@ -36,7 +36,10 @@ const Signup = () => {
       console.log(responseData);
       if (responseData.message === "User already exists") {
         setError("User already exists");
-      } else navigate("/login");
+      } else {
+        setError(null);
+        navigate("/login");
+      }
     } catch (error) {
       console.log(error);
     }
